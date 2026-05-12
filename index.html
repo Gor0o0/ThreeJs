@@ -7,14 +7,28 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <script type="importmap">
+    <!-- CDN links |online import -->
+    <!-- <script type="importmap">
         {
             "imports": {
                 "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
                 "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
             }
         }
+    </script> -->
+
+
+    <!-- local import -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": ".node_modules/three/build/three.module.js",
+                "three/addons/": ".node_modules/three/examples/jsm/"
+            }
+        }
     </script>
+
     <script type="module" src="./src/main.js"></script>
+    <!-- <script type="module" src="./example.js"></script> -->
 </body>
 </html>

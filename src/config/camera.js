@@ -9,4 +9,13 @@ export const CAMERA_CONFIG = {
     position: { x:5, y: 8 , z: 5},
     // center scene
     target: { x: 0, y: 0, z: 0 }
+
+    controls: {
+        enableDamping: true, //> Плавность
+        dampingFactor: 0.03, //> Инерция камеры
+        autoRotate: false,
+        enableZoom: false,
+        enablePan: true,
+        rotateSpeed: 0.5,
+    }
 }

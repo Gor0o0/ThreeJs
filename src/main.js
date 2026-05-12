@@ -2,13 +2,14 @@ import * as THREE from 'three';
 import {SceneManager} from "./core/SceneManager.js";
 import {CameraManager} from "./core/CameraManager.js";
 import {LightManager} from "./core/LightManager.js";
-
+import {Settings} from "./utils/Settings.js";
 
 class Main{
     constructor(){
         this.sceneManager = null;
         this.cameraManager = null;
         this.lightManager = null;
+        this.settings = null;
         this.renderer = null;
         this.camera = null;
         
@@ -41,22 +42,36 @@ class Main{
         
         this.cameraManager = new CameraManager(this.renderer.domElement);
         this.cameraManager.create();
+        this.cameraManager.createControls();
         
         this.lightManager = new LightManager(scene);
         this.lightManager.createAll();
-        this.test(scene);
+        //this.test(scene);
+
+        this.settings = new Settings(scene);
+        this.settings.craeteAllHelpers();
+        this.settings.createAllMeshes();
+
+        window.addEventListener('resize', this.onWindowResize.bind(this));
 
         this.animate();
     }
 
+    onWindowResize() {
+        this.cameraManager.onWindowResize();
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
     animate(){
         requestAnimationFrame(() => this.animate());
-        this.cube.rotation.x += 0.01;
-        this.cube.rotation.y += 0.01;
+        // this.cube.rotation.x += 0.01;
+        // this.cube.rotation.y += 0.01;
         
-        this.time += 0.016;
-        this.cube.rotation.x = this.time;
-        this.cube.rotation.y = this.time;
+        // this.time += 0.016;
+        // this.cube.rotation.x = this.time;
+        // this.cube.rotation.y = this.time;
+
+        this.cameraManager.update();
 
         this.renderer.render(
             this.sceneManager.getScene(),
