@@ -21,7 +21,12 @@ const material = new THREE.MeshStandardMaterial({
     metalness : 0.5
 });
 const cube = new THREE.Mesh(geometry, material);
+cube.scale.set(1.5,3,1.5);
 scene.add(cube);
+
+const axes = new THREE.AxesHelper();
+axes.scale.set(10,10,10);
+scene.add(axes);
 
 camera.position.z = 25;
 

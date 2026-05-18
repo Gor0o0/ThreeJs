@@ -13,19 +13,25 @@ export class LightManager {
     }
     
     _createMainLight(){
-        const config = LIGHTS_CONFIG.main
-        const light = 
-            new THREE.DirectionalLight(config.color, config.intensity);
+        const config = LIGHTS_CONFIG.main;
+        
+        const light = new THREE.DirectionalLight(config.color, config.intensity);
         light.position.set(config.position.x, config.position.y, config.position.z);
         
-        if(config.castShadow){
+        if (config.castShadow) {
             light.castShadow = true;
-            //light.shadow.MapSize.with = config.shadowMapSize;
-            //light.shadow.MapSize.height = config.shadowMapSize;
+            
+            light.shadow.mapSize.width = config.shadowMapSize || 2048;
+            light.shadow.mapSize.height = config.shadowMapSize || 2048;
             
             light.shadow.camera.near = 0.5;
             light.shadow.camera.far = 20;
+            light.shadow.camera.left = -15;
+            light.shadow.camera.right = 15;
+            light.shadow.camera.top = 15;
+            light.shadow.camera.bottom = -15;
         }
+        
         this.scene.add(light);
         this.lights.main = light;
     }

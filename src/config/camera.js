@@ -8,7 +8,7 @@ export const CAMERA_CONFIG = {
     // transform position
     position: { x:5, y: 8 , z: 5},
     // center scene
-    target: { x: 0, y: 0, z: 0 }
+    target: { x: 0, y: 0, z: 0 },
 
     controls: {
         enableDamping: true, //> Плавность

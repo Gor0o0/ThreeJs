@@ -3,7 +3,7 @@ import {OrbitControls} from "three/addons/controls/OrbitControls.js";
 import {CAMERA_CONFIG} from "../config/camera.js";
 
 export class CameraManager {
-    constructor() {
+    constructor(renderDomElement) {
         this.camera = null;
         this.controls = null;
         this.renderDomElement = renderDomElement;
@@ -30,8 +30,10 @@ export class CameraManager {
         
         return this.camera
     }
-    createControls() { //> устанавливает | set
+
+    createControls() {
         this.controls = new OrbitControls(this.camera, this.renderDomElement);
+
         this.controls.enablePan = CAMERA_CONFIG.controls.enablePan;
         this.controls.enableDamping = CAMERA_CONFIG.controls.enableDamping;
         this.controls.enableZoom = CAMERA_CONFIG.controls.enableZoom;
@@ -40,20 +42,24 @@ export class CameraManager {
         this.controls.rotateSpeed = CAMERA_CONFIG.controls.rotateSpeed;
         this.controls.zoomSpeed = CAMERA_CONFIG.controls.zoomSpeed;
 
-        this.controls,position.set(
+        // Правильная установка target
+        this.controls.target.set(
             CAMERA_CONFIG.target.x,
-            CAMERA_CONFIG.TARGET.Y,
-            CAMERA_CONFIG.TARGET.z,
-            
+            CAMERA_CONFIG.target.y,
+            CAMERA_CONFIG.target.z
         );
+
+        // Опционально — сразу применить изменения
+        this.controls.update();
 
         return this.controls;
     }
 
     onWindowResize() {
-        this.camera.aspect = window.innerWidth / window.innerHeight;
-        this.camera.updateProjectionMatrix();
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        if (this.camera) {
+            this.camera.aspect = window.innerWidth / window.innerHeight;
+            this.camera.updateProjectionMatrix();
+        }
     }
 
     update(){ //> Получатель | get

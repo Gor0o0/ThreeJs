@@ -6,7 +6,7 @@ export class Settings{
         this.scene = scene;
     }
 
-    craeteAllHelpers(){
+    createAllHelpers(){
         this._createGridHelper();
         this._createAxesHelper();
     }
@@ -32,15 +32,21 @@ export class Settings{
 
     //> -=-=| Компоненты сцены
     _createCubeMesh(){
-        const geometry = new THREE.BoxGeometry(1,1,1);
-        const material = new THREE.MestBasicMaterial({color: 0xffff00});
-        material.transparent = true;
-        material.opacity = 0.5;
-        const mesh = new THREE.mesh(geometry, material)
-        mesh.rotation = THREE.Euler({isEuler: true, x: 10, y: 10, z: 10})
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        
+        const material = new THREE.MeshBasicMaterial({
+            color: 0xffff00,
+            transparent: true,
+            opacity: 0.5
+        });
+        
+        const mesh = new THREE.Mesh(geometry, material);
+        
         mesh.position.y = 3;
+        mesh.rotation.set(0.2, 0.2, 0.2);
+        
         console.log(mesh);
-        this.scene.add(mesh)
+        this.scene.add(mesh);
     }
 
     _createCustomMesh(){
