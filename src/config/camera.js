@@ -14,7 +14,8 @@ export const CAMERA_CONFIG = {
         enableDamping: true, //> Плавность
         dampingFactor: 0.03, //> Инерция камеры
         autoRotate: false,
-        enableZoom: false,
+        enableZoom: true,
+        zoomSpeed: 1,
         enablePan: true,
         rotateSpeed: 0.5,
     }

@@ -97,8 +97,7 @@ class Main{
         this.shipGenerator.createShip('scout');
 
         this.modelLoader = new ModelLoader(scene);
-        this.modelLoader.load();
-
+        // this.modelLoader.load(3);
 
         window.addEventListener('resize', this.onWindowResize.bind(this));
 
