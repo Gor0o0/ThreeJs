@@ -1,4 +1,4 @@
-export const CAMERA_CONFIG = {
+﻿export const CAMERA_CONFIG = {
     // angle camera
     fov: 45,
     // near point look
@@ -9,14 +9,14 @@ export const CAMERA_CONFIG = {
     position: { x:5, y: 8 , z: 5},
     // center scene
     target: { x: 0, y: 0, z: 0 },
-
+    
     controls: {
-        enableDamping: true, //> Плавность
-        dampingFactor: 0.03, //> Инерция камеры
-        autoRotate: false,
-        enableZoom: true,
+        enableDamping: true, // плавность
+        dampingFactor: 0.1, // сила инерции
+        autoRotate: false, // автоповорот
+        enableZoom: true, // приближение - отдаление
         zoomSpeed: 1,
-        enablePan: true,
-        rotateSpeed: 0.5,
+        enablePan: true, // панорама
+        rotateSpeed: 0.5  // скорость вращения
     }
 }

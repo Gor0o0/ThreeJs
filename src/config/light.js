@@ -1,4 +1,4 @@
-export const LIGHTS_CONFIG = {
+﻿export const LIGHTS_CONFIG = {
     // основной источник света - солнце
     main: {
         type: 'directional',

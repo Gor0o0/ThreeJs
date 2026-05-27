@@ -1,4 +1,4 @@
-export const SCENE_CONFIG = {
+﻿export const SCENE_CONFIG = {
     background: 0x1E1036,
     fog: {
         // activity

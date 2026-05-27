@@ -1,24 +1,18 @@
 {
-  "name": "threejs",
-  "version": "1.0.0",
-  "description": "helpful commands:",
-  "main": "index.js",
+  "name": "vite-project",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "devDependencies": {
+    "vite": "^8.0.12"
+  },
   "dependencies": {
     "three": "^0.184.0",
-    "tree": "^0.1.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Gor0o0/ThreeJs.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Gor0o0/ThreeJs/issues"
-  },
-  "homepage": "https://github.com/Gor0o0/ThreeJs#readme"
+    "tweakpane": "^4.0.5"
+  }
 }

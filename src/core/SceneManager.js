@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+﻿import * as THREE from 'three';
 import {SCENE_CONFIG} from "../config/scene.js";
 
 export class SceneManager {
@@ -16,7 +16,6 @@ export class SceneManager {
                 SCENE_CONFIG.fog.density
             )
         }
-        
         return this.scene;
     }
     

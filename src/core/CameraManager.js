@@ -1,5 +1,6 @@
-import * as THREE from 'three';
-import {OrbitControls} from "three/addons/controls/OrbitControls.js";
+﻿import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import { FlyControls } from 'three/addons/controls/FlyControls.js';
 import {CAMERA_CONFIG} from "../config/camera.js";
 
 export class CameraManager {
@@ -27,11 +28,10 @@ export class CameraManager {
             CAMERA_CONFIG.target.y,
             CAMERA_CONFIG.target.z
         )
-        
         return this.camera
     }
-
-    createControls() {
+    
+    createOrbitControls(){  //setter
         this.controls = new OrbitControls(this.camera, this.renderDomElement);
 
         this.controls.enablePan = CAMERA_CONFIG.controls.enablePan;
@@ -41,34 +41,43 @@ export class CameraManager {
         this.controls.autoRotate = CAMERA_CONFIG.controls.autoRotate;
         this.controls.rotateSpeed = CAMERA_CONFIG.controls.rotateSpeed;
         this.controls.zoomSpeed = CAMERA_CONFIG.controls.zoomSpeed;
-
-        // Правильная установка target
+        
         this.controls.target.set(
             CAMERA_CONFIG.target.x,
             CAMERA_CONFIG.target.y,
             CAMERA_CONFIG.target.z
         );
-
-        // Опционально — сразу применить изменения
-        this.controls.update();
-
+        
         return this.controls;
     }
 
-    onWindowResize() {
-        if (this.camera) {
-            this.camera.aspect = window.innerWidth / window.innerHeight;
-            this.camera.updateProjectionMatrix();
-        }
-    }
+    createFlyControls(){
+        this.controls = new FlyControls(this.camera, this.renderDomElement);
 
-    update(){ //> Получатель | get
+        this.controls.movementSpeed = 20;
+		this.controls.rollSpeed = Math.PI / 6;
+		this.controls.autoForward = false;
+		this.controls.dragToLook = false;
+
+        return this.controls;
+    }
+    
+    onWindowResize(){
+        this.camera.aspect = window.innerWidth / window.innerHeight;
+        this.camera.updateProjectionMatrix();
+    }
+    
+    update(delta = 0){
         if(this.controls){
-            this.controls.update();
+            this.controls.update(delta);
         }
     }
 
     getCamera() {
         return this.camera
+    }
+
+    getControls() { //getter
+        return this.controls;
     }
 }
