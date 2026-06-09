@@ -1,6 +1,5 @@
 ﻿import * as THREE from 'three';
 import {TextureLoader} from '../core/TextureLoader.js';
-import { roughness } from 'three/tsl';
 
 export class PartsShip {
     constructor() {
