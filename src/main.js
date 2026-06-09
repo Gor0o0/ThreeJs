@@ -6,7 +6,6 @@ import {Settings} from "./utils/Settings.js"
 import {ShipGenerator} from "./utils/ShipGenerator.js"
 import {SkySettings} from "./utils/SkySettings.js"
 import {ModelLoader} from "./core/ModelLoader.js"
-import { PaneConstructor } from './utils/PaneConstructor.js';
 import { Ship } from './entities/Ship.js';
 
 class Main{
@@ -29,7 +28,6 @@ class Main{
 
         this.asteroid = null;
 
-        this.paneConstructor = null;
         this.ship = null;
         this.cruiser = null;
 
@@ -78,17 +76,9 @@ class Main{
 
         setTimeout(()=> {
             this.modelLoader.load(3);
-        }, 1000)     
-
-        setTimeout(()=> {
-            this.asteroid = this.modelLoader.model
-            this.asteroid.position.x = 5;
-        }, 4000)   
+        }, 1000)      
 
         this.clock = new THREE.Clock();
-
-        this.paneConstructor = new PaneConstructor(scene);
-        
 
         //setTimeout(() => {this.model = this.modelLoader.model; this.model.name = 'Model';this.paneConstructor.addAllPanels(this.model);}, 500);
         
@@ -121,13 +111,6 @@ class Main{
             this.ship.rotation.x = camera.rotation.x;
             this.ship.rotation.y = camera.rotation.y - 45;
             this.ship.rotation.z = camera.rotation.z - 60;
-        }
-
-        if(this.asteroid && this.ship){  // есть ли астероид и корабль, если есть проверяем дистанцию
-            if(this.ship.position.distanceTo(this.asteroid.position) < 5){ 
-                this.sceneManager.scene.remove(this.asteroid);
-                this.asteroid = null;
-            }
         }
 
         this.renderer.render(
