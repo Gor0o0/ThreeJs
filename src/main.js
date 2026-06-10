@@ -74,14 +74,8 @@ class Main{
             this.cruiser = new Ship(scene);
         }, 500)
 
-        setTimeout(()=> {
-            this.modelLoader.load(3);
-        }, 1000)      
-
         this.clock = new THREE.Clock();
 
-        //setTimeout(() => {this.model = this.modelLoader.model; this.model.name = 'Model';this.paneConstructor.addAllPanels(this.model);}, 500);
-        
         window.addEventListener('resize', () => this.onWindowResize());
 
         this.animate();
